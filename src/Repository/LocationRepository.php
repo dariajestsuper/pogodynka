@@ -38,4 +38,25 @@ class LocationRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function findByLocation($location)
+    {
+        $qb = $this->createQueryBuilder('m');
+        $qb->where('m.city = :location')
+            ->setParameter('location', $location);
+        $query = $qb->getQuery();
+        $result = $query->getResult();
+        return $result;
+    }
+
+    public function getId($location)
+    {
+        $qb = $this->createQueryBuilder('m');
+        $qb->where('m.id = :location')
+            ->setParameter('location', $location);
+        $query = $qb->getQuery();
+        $result = $query->getResult();
+        return $result;
+    }
 }
+
