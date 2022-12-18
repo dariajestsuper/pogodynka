@@ -1,0 +1,31 @@
+# https://symfony.com/doc/current/reference/constraints/Range.html
+App\Entity\Location:
+  properties:     
+    latitude:
+      - Range:
+          min: -90 
+          max: 90
+          groups: ['new', 'edit'] 
+      - NotBlank: ~               
+    longitude:
+      - Range:
+          min: -180
+          max: 180
+          groups: ['new', 'edit']
+      - NotBlank: ~        
+    city:
+      - NotBlank: ~
+    country:
+      - NotBlank: ~ 
+
+App\Entity\Measurement:
+  properties:       
+    # date:
+    #   - Date: ~
+    #   - NotBlank: ~ 
+    celsius:
+      - Range:
+          min: 
+          max: 55.0
+          groups: ['new', 'edit'] 
+      - NotBlank: ~
